@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>
+      Обзор случайных людей
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="updatePerson()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>
+        <img [src]="person?.picture.medium" alt="" (click)="viewBig()">
+      </ion-col>
+
+      <ion-col col-8>
+        <h3>{{person?.name.first}} {{person?.name.last}}</h3>
+        {{person?.dob | date: "dd/MM/yyyy"}}
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <a href="mailto:{{person?.phone}}" ion-item>
+      {{person?.email}}
+    </a>
+
+    <a href="tel:{{person?.phone}}" ion-item>
+      {{person?.phone}}
+    </a>
+
+    <a href="tel:{{person?.cell}}" ion-item>
+      {{person?.cell}}
+    </a>
+  </ion-list>
+
+</ion-content>
